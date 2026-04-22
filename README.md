@@ -33,19 +33,24 @@ Every file is standalone and cross-linked. File:line citations point into the tw
 
 | File | What's in it |
 |---|---|
+| [`notes/00-summary.md`](notes/00-summary.md) | One-page cheat sheet for the host: one-paragraph insight per stage, the 3 files to keep open during the walkthrough, the 3 highest-signal discussion questions, and a surprises list. Read this first on Friday night. |
 | [`notes/01-orientation.md`](notes/01-orientation.md) | Stage 1: structural sizing of both repos — file counts, LOC, top-5 largest files, architecture doc summaries, and 5 first observations (including a flag that Claude Code's README misreports `QueryEngine.ts` as ~46K lines when it's actually 1,297). |
 | [`notes/02-architecture-map.md`](notes/02-architecture-map.md) | Stage 2: the 14 most important files in each repo with 2-3 sentence purpose + line-number anchors for every key function/class, plus a top-level structural comparison and a consolidated jump table at the end. |
+| [`notes/03-tool-loop.md`](notes/03-tool-loop.md) | Stage 3: deep-read of the LLM-decides → call-tool → feed-result loop in both repos. Claude Code's `queryLoop` (12 exit reasons, 4 retry strategies) vs pi-mono's `runLoop` (2 exit reasons, no in-loop retries), with ~15-line excerpts from each. |
+| [`notes/04-five-patterns.md`](notes/04-five-patterns.md) | Stage 4: side-by-side comparison across five patterns — tool contract, permission model, streaming, context/state, sub-agent orchestration. Ends with a consolidated cross-cutting table. |
+| [`notes/05-steal-this.md`](notes/05-steal-this.md) | Stage 5: five concrete patterns builders could copy into their own agentic product. Mid-stream tool dispatch, cascading overflow recovery, cache-identical sub-agent fork, lifecycle-event extension SDK, normalized multi-provider stream protocol. |
+| [`notes/06-session-script.md`](notes/06-session-script.md) | Stage 6: minute-by-minute walkthrough plan for 9:30–11:30 IST. Files to open per block, lines to highlight, discussion prompts, and a "if you run out of time, cut in this order" section. |
 | [`notes/side-why-typescript.md`](notes/side-why-typescript.md) | Side memo for the room: why both codebases are TypeScript and not Go or Python. Evidence-based, with 3 discussion prompts. |
-
-Stages 3–6 (tool-loop deep-read, 5-pattern comparison, "steal this" patterns, session script) are in progress and will be added before Saturday.
 
 ---
 
 ## Reading order
 
-1. **Start with `notes/01-orientation.md`** to get the structural feel and the surprise-flags.
-2. **Then `notes/02-architecture-map.md`** to see which files to open during the walkthrough — every row has a line-number anchor you can `cmd+click` from the cloned source.
-3. **`notes/side-why-typescript.md`** is optional prep but useful context for the discussion.
+1. **Start with `notes/00-summary.md`** for the one-page cheat sheet — it's the host's walk-in brief.
+2. **Then `notes/01-orientation.md` → `notes/02-architecture-map.md`** to get the structural feel and the file:line index.
+3. **`notes/03-tool-loop.md` → `notes/04-five-patterns.md` → `notes/05-steal-this.md`** are the content spine of the session itself; read in order.
+4. **`notes/06-session-script.md`** is the minute-by-minute plan — skim Friday night, drive from it live.
+5. **`notes/side-why-typescript.md`** is optional prep but useful context for the discussion.
 
 Notes follow a strict convention: every non-obvious claim cites a specific file and line number in the two source repos. If a citation looks wrong, the two SHAs in the table above are the ground truth — the repos are moving targets, so pin to those.
 
