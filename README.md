@@ -39,7 +39,7 @@ Every file is standalone and cross-linked. File:line citations point into the tw
 | [`notes/03-tool-loop.md`](notes/03-tool-loop.md) | Stage 3: deep-read of the LLM-decides → call-tool → feed-result loop in both repos. Claude Code's `queryLoop` (12 exit reasons, 4 retry strategies) vs pi-mono's `runLoop` (2 exit reasons, no in-loop retries), with ~15-line excerpts from each. |
 | [`notes/04-five-patterns.md`](notes/04-five-patterns.md) | Stage 4: side-by-side comparison across five patterns — tool contract, permission model, streaming, context/state, sub-agent orchestration. Ends with a consolidated cross-cutting table. |
 | [`notes/05-steal-this.md`](notes/05-steal-this.md) | Stage 5: five concrete patterns builders could copy into their own agentic product. Mid-stream tool dispatch, cascading overflow recovery, cache-identical sub-agent fork, lifecycle-event extension SDK, normalized multi-provider stream protocol. |
-| [`notes/06-session-script.md`](notes/06-session-script.md) | Stage 6: minute-by-minute walkthrough plan for 9:30–11:30 IST. Files to open per block, lines to highlight, discussion prompts, and a "if you run out of time, cut in this order" section. |
+| [`notes/06-build-your-own-agent.md`](notes/06-build-your-own-agent.md) | Stage 6: a working ~180-line minimal AI agent framework in TypeScript — `tool.ts`, `provider.ts`, `agent.ts`, `cli.ts` + two example tools. Plus a "what to add next and in what order" guide so you grow the framework only when real users demand it. |
 | [`notes/side-why-typescript.md`](notes/side-why-typescript.md) | Side memo for the room: why both codebases are TypeScript and not Go or Python. Evidence-based, with 3 discussion prompts. |
 
 ---
@@ -49,7 +49,7 @@ Every file is standalone and cross-linked. File:line citations point into the tw
 1. **Start with `notes/00-summary.md`** for the one-page cheat sheet — it's the host's walk-in brief.
 2. **Then `notes/01-orientation.md` → `notes/02-architecture-map.md`** to get the structural feel and the file:line index.
 3. **`notes/03-tool-loop.md` → `notes/04-five-patterns.md` → `notes/05-steal-this.md`** are the content spine of the session itself; read in order.
-4. **`notes/06-session-script.md`** is the minute-by-minute plan — skim Friday night, drive from it live.
+4. **`notes/06-build-your-own-agent.md`** is a working ~180-line minimal AI agent framework — the payoff of everything above, as runnable code.
 5. **`notes/side-why-typescript.md`** is optional prep but useful context for the discussion.
 
 Notes follow a strict convention: every non-obvious claim cites a specific file and line number in the two source repos. If a citation looks wrong, the two SHAs in the table above are the ground truth — the repos are moving targets, so pin to those.

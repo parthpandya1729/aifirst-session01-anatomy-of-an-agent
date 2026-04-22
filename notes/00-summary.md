@@ -16,7 +16,7 @@ One-page overview of everything in `notes/`. Read this before walking into the r
 
 **Stage 5 — Steal-this patterns.** Five concrete patterns worth lifting: **mid-stream tool dispatch** (CC, ~halves perceived latency on multi-tool turns), **cascading overflow recovery** (CC, graceful degradation instead of 413 errors), **cache-identical sub-agent fork** (CC, ~90% cheaper sub-agents via byte-identical prompt prefix), **lifecycle-event extension SDK** (pi, user-written TS plugins instead of feature flags), **normalized multi-provider stream protocol** (pi, 9-event union shields agent code from provider churn across 11 providers). Details and citations in [`notes/05-steal-this.md`](05-steal-this.md).
 
-**Stage 6 — Session script.** Minute-by-minute plan for 9:30–11:30: 5-min opening → 25 min Claude Code → 25 min pi-mono → 10 min break → 45 min five-pattern compare → 10 min wrap. The block-by-block breakdown plus a "if you run out of time, cut in this order" section is in [`notes/06-session-script.md`](06-session-script.md). Ten discussion prompts total; the closing round ("pick one of the five steal-this patterns and say what it would cost you to ship next week") is the single most important 5 minutes.
+**Stage 6 — Build your own minimal agent framework.** A working, ~180-line TypeScript blueprint that turns everything we read into code: `tool.ts` (the contract), `provider.ts` (Anthropic streaming adapter), `agent.ts` (the loop), `cli.ts` (REPL), plus two example tools (`read_file`, `bash`). Pi-mono posture — pure loop, small tool contract, push everything else outward. Also includes a "what to add next and in what order" section so you grow the framework in response to real user pain, not speculation. Full blueprint in [`notes/06-build-your-own-agent.md`](06-build-your-own-agent.md).
 
 ---
 
@@ -69,8 +69,8 @@ Curated from Stage 6's ten prompts — the ones most likely to produce disagreem
 If you only have 30 minutes on Friday night to refresh:
 
 1. **This file** (`notes/00-summary.md`) — you're reading it.
-2. **`notes/06-session-script.md`** — the minute-by-minute. Skim the "if you run out of time" section at the bottom.
-3. **`notes/04-five-patterns.md`** — the cross-cutting table at the end is the single best artifact; everything else is backup.
+2. **`notes/04-five-patterns.md`** — the cross-cutting table at the end is the single best artifact; everything else is backup.
+3. **`notes/06-build-your-own-agent.md`** — the 180-line minimal framework makes the abstractions concrete; a great closer for the room.
 4. Open `claude-code/src/query.ts` and `pi-mono/packages/agent/src/agent-loop.ts` side by side once, for 5 minutes. That's what the room is going to see — you want that visual in your head before you're on the clock.
 
 If you have 2 hours: read `notes/01-orientation.md` → `notes/02-architecture-map.md` → `notes/03-tool-loop.md` in full, in order. They build on each other.
