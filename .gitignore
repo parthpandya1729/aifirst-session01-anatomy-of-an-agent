@@ -20,3 +20,8 @@ Thumbs.db
 node_modules/
 dist/
 .cache/
+
+# Env files (.env.example IS committed; .env / .env.local are not)
+.env
+.env.local
+.env.*.local

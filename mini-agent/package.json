@@ -1,0 +1,19 @@
+{
+  "name": "mini-agent",
+  "version": "0.1.0",
+  "description": "A minimal ~180-line AI agent framework — companion code to notes/06-build-your-own-agent.md",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

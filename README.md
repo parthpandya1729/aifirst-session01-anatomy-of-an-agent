@@ -42,6 +42,10 @@ Every file is standalone and cross-linked. File:line citations point into the tw
 | [`notes/06-build-your-own-agent.md`](notes/06-build-your-own-agent.md) | Stage 6: a working ~180-line minimal AI agent framework in TypeScript — `tool.ts`, `provider.ts`, `agent.ts`, `cli.ts` + two example tools. Plus a "what to add next and in what order" guide so you grow the framework only when real users demand it. |
 | [`notes/side-why-typescript.md`](notes/side-why-typescript.md) | Side memo for the room: why both codebases are TypeScript and not Go or Python. Evidence-based, with 3 discussion prompts. |
 
+### Runnable companion code
+
+The blueprint from Stage 6 is also checked in as a working project at [`mini-agent/`](mini-agent/). `cd mini-agent && npm install && npm start` after setting `ANTHROPIC_API_KEY`. Typechecks cleanly with `npm run typecheck`.
+
 ---
 
 ## Reading order
