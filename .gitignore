@@ -1,0 +1,22 @@
+# Exclude the two upstream codebases under study.
+# They're cloned locally for reading; we don't redistribute them.
+# Contributors should clone them fresh from the URLs in README.md.
+/claude-code/
+/pi-mono/
+
+# Claude Code user-local settings (project-level settings.json is fine to commit)
+.claude/settings.local.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node / Bun / TS if any tooling lands here later
+node_modules/
+dist/
+.cache/
