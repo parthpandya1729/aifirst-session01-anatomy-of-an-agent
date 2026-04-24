@@ -1,23 +1,19 @@
-import Anthropic from "@anthropic-ai/sdk";
+import type Anthropic from "@anthropic-ai/sdk";
+import { callModelAnthropic } from "./providers/anthropic.js";
+import { callModelGemini } from "./providers/gemini.js";
+import { callModelGroq } from "./providers/groq.js";
 import type { Tool } from "./tool.js";
-
-const client = new Anthropic();
 
 export async function callModel(
 	messages: Anthropic.MessageParam[],
 	tools: Tool[],
 	onText: (chunk: string) => void,
 ): Promise<Anthropic.Message> {
-	const stream = client.messages.stream({
-		model: "claude-sonnet-4-5",
-		max_tokens: 4096,
-		messages,
-		tools: tools.map((t) => ({
-			name: t.name,
-			description: t.description,
-			input_schema: t.input_schema,
-		})),
-	});
-	stream.on("text", onText);
-	return await stream.finalMessage();
+	const provider = (process.env.PROVIDER ?? "anthropic").toLowerCase();
+	if (provider === "gemini") return callModelGemini(messages, tools, onText);
+	if (provider === "groq") return callModelGroq(messages, tools, onText);
+	if (provider === "anthropic") return callModelAnthropic(messages, tools, onText);
+	throw new Error(
+		`Unknown PROVIDER: ${provider}. Use "anthropic", "gemini", or "groq".`,
+	);
 }

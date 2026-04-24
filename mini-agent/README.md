@@ -10,26 +10,32 @@ mini-agent/
 ├── tsconfig.json
 ├── .env.example
 └── src/
-    ├── tool.ts          # Tool interface (5 fields)
-    ├── provider.ts      # Anthropic streaming adapter
-    ├── agent.ts         # The loop
-    ├── cli.ts           # REPL entry point
+    ├── tool.ts              # Tool interface (5 fields)
+    ├── provider.ts          # Provider router (PROVIDER env var)
+    ├── providers/
+    │   ├── anthropic.ts     # Anthropic streaming adapter
+    │   ├── gemini.ts        # Gemini streaming adapter + format translator
+    │   └── groq.ts          # Groq (OpenAI-compatible) adapter + format translator
+    ├── agent.ts             # The loop
+    ├── cli.ts               # REPL entry point
     └── tools/
-        ├── read.ts      # read_file tool
-        └── bash.ts      # bash tool
+        ├── read.ts          # read_file tool
+        └── bash.ts          # bash tool
 ```
 
-One runtime dependency (`@anthropic-ai/sdk`). No permissions, no compaction, no sub-agents — by design. Add those when a real user asks for them; the notes file lists the order.
+Three runtime dependencies (`@anthropic-ai/sdk`, `@google/genai`, `openai`). No permissions, no compaction, no sub-agents — by design. Add those when a real user asks for them; the notes file lists the order.
 
 ## Run it
 
 ```bash
 cd mini-agent
-cp .env.example .env           # fill in your ANTHROPIC_API_KEY
+cp .env.example .env           # pick PROVIDER=anthropic | gemini | groq, set the matching key
 npm install
 export $(cat .env | xargs)     # or use a tool like `direnv`
 npm start
 ```
+
+See [`USAGE.md`](USAGE.md) for the provider table, examples, and troubleshooting.
 
 Then try a prompt that forces multiple tool calls:
 

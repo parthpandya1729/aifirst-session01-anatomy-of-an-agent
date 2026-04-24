@@ -44,7 +44,28 @@ Every file is standalone and cross-linked. File:line citations point into the tw
 
 ### Runnable companion code
 
-The blueprint from Stage 6 is also checked in as a working project at [`mini-agent/`](mini-agent/). `cd mini-agent && npm install && npm start` after setting `ANTHROPIC_API_KEY`. Typechecks cleanly with `npm run typecheck`.
+The blueprint from Stage 6 is also checked in as a working project at [`mini-agent/`](mini-agent/) — a ~180-line TypeScript agent with streaming adapters for **Anthropic, Gemini, and Groq**, two tools (`bash`, `read_file`), and a REPL. Swap providers with one env var; the agent loop stays identical.
+
+**Quick start:**
+
+```bash
+cd mini-agent
+cp .env.example .env                  # pick PROVIDER=anthropic | gemini | groq, set the matching key
+npm install
+export $(cat .env | xargs)            # or use direnv
+npm start                             # REPL — type 'exit' to quit
+npm run typecheck                     # tsc --noEmit, should be clean
+```
+
+| PROVIDER | Required key | Default model | Get a key |
+|---|---|---|---|
+| `anthropic` (default) | `ANTHROPIC_API_KEY` | `claude-sonnet-4-5` | [console.anthropic.com](https://console.anthropic.com/) |
+| `gemini` | `GEMINI_API_KEY` | `gemini-2.5-flash` | [aistudio.google.com/apikey](https://aistudio.google.com/apikey) — free tier |
+| `groq` | `GROQ_API_KEY` | `llama-3.3-70b-versatile` | [console.groq.com/keys](https://console.groq.com/keys) — free tier |
+
+Then try `list the .ts files in src/ and summarize each in one line` — you'll watch it call `bash`, then `read_file` on each file, then summarize, all through a single loop. Each non-Anthropic adapter translates to/from its native format (Gemini's `functionCall`/`functionResponse`, or OpenAI-style `tool_calls` for Groq) inside `src/providers/`, so `src/agent.ts` stays provider-agnostic.
+
+See [`mini-agent/USAGE.md`](mini-agent/USAGE.md) for example prompts, how to add a tool, configuration knobs, and a troubleshooting table. The `bash` tool is unsandboxed — only run it in a repo you'd trust a tired intern with.
 
 ---
 
